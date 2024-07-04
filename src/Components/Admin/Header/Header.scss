@@ -1,0 +1,67 @@
+.main-header-admin{
+    border-bottom: 1px solid #dcdfe4;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1111;
+    .header-inner{
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        padding-left: 16px;
+        padding-right: 16px;
+        .ant-btn-primary {
+            color: #fff;
+            background: #CFB5A7;
+            &:hover{
+                background-color: #aa836e;
+            }
+        }
+        .header-actions{
+            display: flex;
+            flex-direction: row;
+            gap: 16px;
+            align-items: center;
+            .header-actions__button{
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 48px;
+                height: 48px;
+                svg {
+                    border-style: none;
+                    vertical-align: middle;
+                    max-width: 100%;
+                    height: auto;
+                    font-size: 28px;
+                    text-indent: -9999px;
+                }               
+            }
+            .avatar{
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                width: 48px;
+                height: 48px;
+                line-height: 1;
+                border-radius: 50%;
+                overflow: hidden;
+                letter-spacing: 0;
+                user-select: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+}

@@ -1,0 +1,83 @@
+
+.color-container-item{
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+.container-admin{
+    width: 100%;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-right: auto;
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    @media (min-width: 1440px) {
+        & {
+            max-width: 1440px;
+        }
+    }
+    @media (min-width: 600px) {
+        & {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+    .container-admin__inner{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .container-admin-header{
+            margin: 0;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        .container-admin-info{
+            padding: 30px 40px;
+            background-color: #ffdfce;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: rgb(78, 78, 78);
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            span{
+                color: black;
+            }
+        }
+        .container-product-color{
+            padding: 30px 40px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            color: rgb(78, 78, 78);
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            .image-list{
+                display: flex;
+                gap: 15px;
+            }
+            .color_code{
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            span{
+                color: black;
+            }
+            .ant-table-thead >tr>th{
+                background: #e0c5b6;
+            }
+            .table_size{
+                margin-top: 15px;
+            }
+        }
+    }
+}
+

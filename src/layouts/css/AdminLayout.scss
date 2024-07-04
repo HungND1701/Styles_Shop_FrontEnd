@@ -1,0 +1,14 @@
+.admin-wrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100%;
+    background-color: #fff;
+    .content-page{
+        padding-left: 280px;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        
+    }
+}

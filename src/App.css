@@ -27,12 +27,28 @@
 .App-link {
   color: #61dafb;
 }
-
+.site-wrapper {
+  padding-top: 96px;
+}
+.cart-page{
+  background-color: #d9d9d9;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1013px) {
+  .site-wrapper {
+    padding-top: 58px;
+  }
+}
+@media (min-width: 1014px) and (max-width: 1200px) {
+  .site-wrapper {
+    padding-top: 82px;
   }
 }

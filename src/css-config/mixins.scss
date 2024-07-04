@@ -1,0 +1,108 @@
+@media (min-width: 769px) and (max-width: 1013px) {
+    .tablet--hidden {
+        display: none !important;
+    }
+}
+@media (max-width: 768px) {
+    .mobile--hidden {
+        display: none !important;
+    }
+}
+@media (min-width: 769px) and (max-width: 1013px) {
+    .tablet--visible {
+        display: block !important;
+    }
+}
+@media (max-width: 768px) {
+    .mobile--visible {
+        display: block !important;
+    }
+}
+
+@mixin sm {
+    @media only screen and (min-width: 640px) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media only screen and (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media only screen and (min-width: 1024px) {
+        @content;
+    }
+}
+@mixin lg0 {
+    @media (max-width: 1013px) {
+        @content;
+    }
+}
+@mixin lg1 {
+    @media (min-width: 1014px) and (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media only screen and (min-width: 1280px) {
+        @content;
+    }
+}
+@mixin xxl1 {
+    @media (max-width: 1660px) {
+        @content;
+    }
+}
+@mixin xxl {
+    @media only screen and (min-width: 1536px) {
+        @content;
+    }
+}
+
+@mixin link-styles {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    transition: all .2s;
+}
+@mixin icon-header {
+    border-style: none;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+@mixin text-center {
+    text-align: center;
+}
+@mixin title {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 2rem 0 1rem;
+}
+@mixin img {
+    border-style: none;
+    vertical-align: middle;
+    max-width: 100%;
+    height: auto;
+}
+@mixin btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    border-radius: 16px;
+    border: 2px solid #000;
+    background-color: #000;
+    color: #fff;
+    padding: 0 30px;
+    transition: all .2s;
+    cursor: pointer;
+}
+@mixin btn--outline {
+    background-color: hsla(0,0%,100%,0);
+    color: #000;
+}

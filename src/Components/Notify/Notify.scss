@@ -1,0 +1,116 @@
+@import "../../css-config/mixins.scss";
+.notify {
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    width: 300px;
+    transition: all .2s;
+    box-sizing: border-box;
+    z-index: 99999;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 0 8px rgba(0,0,0,.15);
+    border-radius: 16px;
+    padding: 18px;
+    touch-action: pan-y;
+    &.is-actice{
+        right: 20px;
+    }
+    &.fail{
+        border: 1px solid #f88a8a;
+    }
+    &.success{
+        border: 1px solid #99ff99;
+    }
+    .notify__close {
+        display: none;
+    }
+    .notify__message {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: .03em;
+        color: #000;
+        margin-bottom: 0;
+    }
+    .notify-product {
+        display: flex;
+        padding-top: 15px;
+        border-top: 1px solid #d9d9d9;
+        margin-top: 15px;
+        padding-bottom: 5px;
+        .notify-product__thumbnail {
+            width: 25%;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 147.2650771388%;
+                height: 0;
+                width: 100%;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+        .notify-product__content {
+            display: flex;
+            flex-flow: column;
+            width: 75%;
+            padding-left: 10px;
+            .notify-product__title {
+                flex: 1;
+                font-weight: 600;
+                font-size: 14px;
+                line-height: 115%;
+                letter-spacing: .03em;
+                color: #000;
+            }
+            .notify-product__option{
+                font-weight: 300;
+            }
+            .notify-product__prices {
+                display: flex;
+                flex-flow: row-reverse;
+                align-items: flex-end;
+                justify-content: flex-end;
+            }
+            .notify-product__prices {
+                font-size: 14px;
+                line-height: 150%;
+                letter-spacing: .03em;
+                color: #000;
+                del {
+                    color: #c4c4c4;
+                }
+                del+ins {
+                    color: #ff3102;
+                    margin-right: 10px;
+                }
+                ins {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    .btn{
+        @include btn
+    }
+    .btn--outline{
+        @include btn--outline
+    }
+    .btn {
+        margin-top: 10px;
+        font-size: 16px;
+        width: 100%;
+    }
+
+}

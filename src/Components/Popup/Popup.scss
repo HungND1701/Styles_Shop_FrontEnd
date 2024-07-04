@@ -1,0 +1,69 @@
+@import "../../css-config/mixins.scss";
+
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 12;
+    .backdrop {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .7);
+    }
+    
+    .popup-body {
+        &.popup-lg {
+            width: 70vw;
+            max-width: 900px;
+        }
+        display: flex;
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50vw;
+        max-width: 800px;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 16px;
+        max-height: 85vh;
+        .close-popup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100vmax;
+            border: 1.125px solid #fff;
+            box-sizing: border-box;
+            background-color: #000;
+            box-shadow: 0 4.5px 5px rgba(0, 0, 0, .2509803922);
+            color: #fff;
+            font-size: 1.5rem;
+            &:hover {
+                scale: 1.1;
+            }
+        }
+    }
+    .popup-wrapper {
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: auto;
+    }
+    &.auth-popup-form {
+        z-index: 15;
+        .popup-body {
+            max-width: 560px;
+        }
+        .popup-wrapper {
+            overflow-x: hidden !important;
+        }
+    }
+}

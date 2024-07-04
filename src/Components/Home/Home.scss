@@ -1,0 +1,67 @@
+@import "../../css-config/mixins.scss";
+
+.homepage{
+    
+}
+.banner-block {
+    margin: 40px 0;
+}
+.homepage-collections {
+    margin-bottom: 50px;
+}
+.homepage-collections__item {
+    position: relative;
+}
+.banner-slide, .homepage-banner {
+    position: relative;
+}
+.banner-slide .slick-arrow {
+    position: absolute;
+    right: 15px;
+    z-index: 1;
+    border: 0;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #fff;
+}
+.collection-grid__thumbnail {
+    overflow: hidden;
+    border-radius: 2px;
+}
+.product-grid>* {
+    transition: all .3s;
+}
+.slick-list, .slick-slider {
+    position: relative;
+    display: block;
+}
+
+.homepage-products .homepage-products__heading {
+    font-size: 28px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.homepage-products__heading span {
+    text-transform: capitalize;
+    font-size: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+    float: right;
+    margin-top: 12px;
+    margin-right: 10px;
+    font-weight: 400;
+}
+.slick-track:after, .slick-track:before {
+    content: "";
+    display: table;
+}
+.slick-track:after {
+    clear: both;
+}

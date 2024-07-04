@@ -1,0 +1,107 @@
+.container-admin{
+    width: 100%;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-right: auto;
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    @media (min-width: 1440px) {
+        & {
+            max-width: 1440px;
+        }
+    }
+    @media (min-width: 600px) {
+        & {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+    .container-admin__inner{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .container-admin-header{
+            margin: 0;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        .container-admin-info{
+            padding: 30px 40px;
+            background-color: #ffdfce;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            color: rgb(78, 78, 78);
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            span{
+                color: black;
+            }
+        }
+        .container-admin-actions{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            padding: 16px ;
+            border-radius: 20px;
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            .search-button{
+                width: 40%;
+                height: 50px;
+                .ant-input-outlined{
+                    height: 100%;
+                    .ant-input-prefix{
+                        font-size: 24px;
+                        margin-inline-end: 8px;
+                    }
+                    input{
+                        font-size: 18px;
+                    }
+                }
+            }
+            .action-buttons{
+                display: flex;
+                gap: 14px;
+                align-items: center;
+                margin-right: 10px;
+                .action-button{
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    line-height: 1.75;
+                    min-width: 64px;
+                    padding: 8px 16px;
+                    border-radius: 12px;
+                    border: none;
+                    text-transform: none;
+                    color: #3d3d3d;
+                    background-color: transparent;
+                    cursor: pointer;
+                    svg{
+                        font-size: 20px;
+                        margin-inline-end: 4px;
+                    }
+                    &:hover{
+                        background-color: #f8f8f8;
+                    }
+                    &.add-button-primary{
+                        background-color: #635bff;
+                        color: #fff;
+                        &:hover{
+                            background-color: #5f57f3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

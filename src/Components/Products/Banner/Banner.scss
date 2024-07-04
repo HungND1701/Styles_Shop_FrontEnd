@@ -1,0 +1,60 @@
+@import "../../../css-config/mixins.scss";
+.banner-block__wrapper {
+    position: relative;
+    .banner-block__content {
+        position: absolute;
+        top: -11%;
+        left: 0;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end;
+        max-width: 800px;
+        padding: 0 0 0 3rem;
+        h2 {
+            position: relative;
+            font-size: 80px;
+            margin-bottom: .5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #fff;
+        }
+        p {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 36px;
+            color: #fff;
+        }
+        &.black h2, &.black p {
+            color: #000;
+        }
+        @media (max-width: 1660px) {
+            & {
+                padding: 0 0 0 2rem;
+                h2 {
+                    font-size: 3.75rem;
+                }
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 500;
+            height: 54px;
+            width: max-content;
+            line-height: 20px;
+            border-radius: 100vmax;
+            border: 0;
+            background-color: #2f5acf;
+            color: #fff;
+            text-transform: uppercase;
+            padding: 0.875rem 2.5rem;
+            transition: all .2s;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,257 @@
+@import "../../../css-config/mixins.scss";
+
+.grid__column {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 1px;
+    vertical-align: top;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding: 9px;
+    width: 100%;
+}
+.product-grid {
+    position: relative;
+    padding-bottom: 12px;
+    .product-grid__image {
+        position: relative;
+    }
+    .product-grid__thumbnail {
+        position: relative;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+        &:hover{
+            .product-grid__select{
+                opacity: 1;
+            }
+        }
+        .product-grid__tags {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: .625rem;
+            right: .75rem;
+            font-size: .625rem;
+            height: 22px;
+            padding: 0 10px;
+            border-radius: 5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #f9f86c;
+            text-transform: capitalize;
+            z-index: 2;
+        }
+        .product-grid__tags--sale {
+            color: #fff;
+            background-color: #ff2459;
+        }
+        .product-grid__image {
+            position: relative;
+            
+            &:before {
+                content: "";
+                display: block;
+                padding-top: 133.779264214%;
+                height: 0;
+                width: 100%;
+            }
+            .hover {
+                opacity: 0;
+            }
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                -o-object-fit: cover;
+                object-fit: cover;
+                -o-object-position: top;
+                object-position: top;
+                &:hover{
+                    &.hover{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+        .product-grid__reviews {
+            position: absolute;
+            top: .625rem;
+            left: .75rem;
+            z-index: 2;
+            .reviews-rating {
+                display: flex;
+                align-items: center;
+                margin-left: -3px;
+                margin-right: -3px;
+                .reviews-rating__star {
+                    display: block;
+                    width: 18px;
+                    height: 15px;
+                    margin: 0 1px 1px;
+                    background-image: url(../../../Assets/star_icon.svg);
+                    background-repeat: no-repeat;
+                    background-position: 50%;
+                    background-size: contain;
+                }
+                .reviews-rating__number {
+                    font-style: normal;
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 1em;
+                    letter-spacing: .03em;
+                    color: #2f5acf;
+                }
+            }
+        }
+        .product-grid__select {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            max-width: calc(100% - 3rem);
+            width: 100%;
+            padding: .75rem .7rem;
+            opacity: 0;
+            pointer-events: none;
+            visibility: visible;
+            transform: translate3d(-50%,20px,0);
+            transition: all .3s;
+            z-index: 2;
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            background: linear-gradient(0deg,rgba(0,0,0,.1),rgba(0,0,0,.1)),hsla(0,0%,100%,.4);
+            border-radius: 8px;
+            pointer-events: auto;
+            &>p {
+                font-weight: 700;
+                text-align: center;
+                margin: 0 0 .5rem;
+            }
+            .option-select {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+                .option-select__item {
+                    &:hover{
+                        &{
+                            .checkmark{
+                                background-color: #000;
+                                color: #fff;
+                            }
+                        }
+                    }
+                    input {
+                    display: none;
+                    }
+                    .checkmark {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 52px;
+                        height: 35px;
+                        border-radius: .5rem;
+                        background-color: #fff;
+                        font-weight: 400;
+                        font-size: 1rem;
+                        color: #000;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        cursor: pointer;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                        transition: all .3s;
+                        @media (min-width: 768px) and (max-width: 1660px) {
+                            & {
+                                width: 40px;
+                                font-size: 0.875rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .visiable{
+            opacity: 1;
+        }
+    }
+    .product-grid__content {
+        .product-grid__options {
+            position: relative;
+            .options-color {
+                display: flex;
+                flex-wrap: wrap;
+                margin-left: -2px;
+                margin-right: -2px;
+                margin-bottom: 10px;
+                .option-color__item {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 3px;
+                    cursor: pointer;
+                    &.is-current:before {
+                        content: "";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: 1px solid #000;
+                        border-radius: 16px;
+                    }
+                    .checkmark {
+                        display: block;
+                        width: 32px;
+                        height: 18px;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-size: 250%;
+                        background-position: 50%;
+                    }
+                }
+            }
+            
+        }
+        .product-grid__title {
+            font-size: 14px;
+            line-height: 1.2em;
+            font-weight: 400;
+            margin-bottom: .275rem;
+        }
+        .product-prices {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-flow: row-reverse;
+            font-size: 14px;
+            font-weight: 400;
+            del {
+                color: #c4c4c4;
+                margin-left: 10px;
+            }
+            span {
+                font-size: .7rem;
+                color: #fff;
+                margin-left: 10px;
+                border-radius: 6px;
+                background: #000;
+                padding: 0 5px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                height: 18px;
+            }
+            ins {
+                text-decoration: none;
+                color: #242424;
+                font-weight: 700;
+            }
+        }
+    }
+}

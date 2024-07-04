@@ -1,0 +1,41 @@
+@import "../../../css-config/mixins.scss";
+.container-products{
+    .grid__column {
+        position: relative;
+        box-sizing: border-box;
+        min-height: 1px;
+        vertical-align: top;
+        margin-left: 0!important;
+        margin-right: 0!important;
+        padding: 9px;
+        width: 100%;
+    }
+    .slick-prev::before, .slick-next::before{
+        font-size: 30px;
+        color: black;
+    }
+    .slick-prev, .slick-next{
+        z-index: 9999;
+        width: 30px;
+        height: 30px;
+    }
+    .slick-prev{
+        left: -35px;
+        @media (max-width: 1440px) {
+            left: 20px;
+        }
+    }
+    .slick-next{
+        right: -35px;
+        @media (max-width: 1440px) {
+            right: 20px;
+        }
+    }
+    .slick-slider .slick-list, .slick-slider .slick-track {
+        transform: translateZ(0);
+    }
+    .products__slides {
+        margin-left: -9px;
+        margin-right: -9px;
+    }
+}
