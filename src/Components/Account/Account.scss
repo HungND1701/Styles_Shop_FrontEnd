@@ -329,6 +329,17 @@
                 z-index: 1;
                 border-radius: 0 0 0.5rem 0.5rem ;
             }
+            .reply{
+                border: 1px solid #d9d9d9;
+                background-color: rgb(232, 232, 232);
+                padding: 16px 25px;
+                position: relative;
+                z-index: 1;
+                border-radius: 0.5rem ;
+                i{
+                    opacity: 0.8;
+                }
+            }
         }
     }
     

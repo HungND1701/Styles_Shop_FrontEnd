@@ -1,8 +1,7 @@
 import './SingleProduct.scss'
-
 import React,{useState, useEffect, useContext} from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Pagination, message } from 'antd';
+import { useParams } from 'react-router-dom';
+import { Pagination, Image ,Col,Row} from 'antd';
 import Slider from 'react-slick';
 import { Tooltip } from 'react-tooltip';
 import { AiTwotoneExclamationCircle } from "react-icons/ai";
@@ -11,175 +10,12 @@ import { AiFillSafetyCertificate } from "react-icons/ai";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { FaShippingFast } from "react-icons/fa";
 import ProductSlider from '../Products/ProductSlider/ProductSlider';
-import products_data from '../../Assets/product';
 import { Context } from '../../utils/context';
 import {getProductById, formatNumber, getNewPrice} from '../../services/product';
 import LoadingPopup from '../Loading/LoadingPopup';
 
-const SingleProduct = (props) => {
+const SingleProduct = () => {
   const { id } = useParams();
-  const reviews= [
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    },
-    {
-      product_id : 1,
-      user : {
-        id: 1,
-        username: "hungnd1701",
-      },
-      color_size: [
-        {
-          color_name: "nâu",
-          size_name: "L",
-        },
-        {
-          color_name: "xanh",
-          size_name: "M",
-        }
-      ],
-      star: 5,
-      comment: "Hàng chất lượng, phù hợp với giá cả!",
-      time: "01.05.2024",
-    }
-  ]
   const [product , setProduct] = useState({
     color_product:[{images: null}],
   });
@@ -194,6 +30,8 @@ const SingleProduct = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [isError, setIsError] = useState(false);
   const [settings, setSettings] = useState({});
+  const [rateAverage, setRateAverge] = useState(5);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const settingSlider ={
     dots: true,
@@ -205,6 +43,7 @@ const SingleProduct = (props) => {
         try {
             setLoading(true);
             const [data1] = await Promise.all([getProductById(id)]);
+            console.log(data1);
             setThumbnails(data1.color_product[colorIndex].images);
             setProduct(data1);
         } catch (error) {
@@ -216,6 +55,17 @@ const SingleProduct = (props) => {
 
     fetchData();
   }, [id]);
+
+  useEffect(()=>{
+    console.log(product);
+    if(Array.isArray(product.reviews) && product.reviews.length !== 0 ){
+      const reviewCount = product.reviews.length;
+      setReviewCount(reviewCount);
+      let total = 0
+      product.reviews.map(rv=>{total = total+rv.rating})
+      setRateAverge(total/reviewCount);
+    }
+  }, [product]);
   useEffect(() => {
     if (product && product.color_product[colorIndex]) {
       setThumbnails(product.color_product[colorIndex].images);
@@ -343,12 +193,12 @@ const SingleProduct = (props) => {
                   <span className="product-grid__sub-title">{"Sản phẩm độc đáo"}</span>
                 </h1>
                 <div className="product-single__ratings scroll-to-step">
-                  <div data-review-count={102} data-review-avg={4.9} className="reviews-rating">
+                  <div className="reviews-rating">
                     {
                       arr.map((index)=>{
-                        if(index <= Math.floor(4.9)){
+                        if(index <= Math.floor(rateAverage)){
                           return <div className="reviews-rating__star is-active"></div>
-                        }else if(index <= Math.floor(4.9 + 1)){
+                        }else if(index < Math.floor(rateAverage + 1)){
                           return <div className="reviews-rating__star is-half"></div>
                         }else{
                           return <div className="reviews-rating__star is-empty"></div>
@@ -356,7 +206,7 @@ const SingleProduct = (props) => {
                       })
                     }
                     <div className="reviews-rating__count">
-                            ({102})
+                            ({reviewCount})
                     </div>
                   </div>
                 </div>
@@ -559,14 +409,14 @@ const SingleProduct = (props) => {
                   <h5>Tổng đánh giá</h5>
                 </div> 
                 <div className="reviews-rating-mb__rating">
-                  {4.2}
+                  {rateAverage}
                 </div> 
-                <div data-review-count={102} data-review-avg={4.9} className="reviews-rating">
+                <div className="reviews-rating">
                     {
                       arr.map((index)=>{
-                        if(index <= Math.floor(4.9)){
+                        if(index <= Math.floor(rateAverage)){
                           return <div className="reviews-rating__star is-active"></div>
-                        }else if(index <= Math.floor(4.9 + 1)){
+                        }else if(index < Math.floor(rateAverage + 1)){
                           return <div className="reviews-rating__star is-half"></div>
                         }else{
                           return <div className="reviews-rating__star is-empty"></div>
@@ -575,7 +425,7 @@ const SingleProduct = (props) => {
                     }
                   </div>
                 <div className="reviews-rating-mb__count">
-                    {102} đánh giá
+                    {reviewCount} đánh giá
                 </div>
               </div>
               <div className="product-rating-overview__fillters">
@@ -604,8 +454,8 @@ const SingleProduct = (props) => {
             </div>
             <div className="reviews-listing">
               <div rel-script="product-reviews-listings" className="grid" data-current-page="1" data-last-page="20" >
-                {
-                  reviews.map((review, index) =>(
+                { (Array.isArray(product.reviews) && product.reviews.length !== 0) &&
+                  product.reviews.map((review, index) =>(
                   <div className="grid__column six-twelfths mobile--one-whole">
                     <div className="reviews-listing__item">
                       <div className="reviews-listing__content">
@@ -613,9 +463,9 @@ const SingleProduct = (props) => {
                           <div className="reviews-rating">
                             {
                               arr.map((index)=>{
-                                if(index <= Math.floor(review.star)){
+                                if(index <= Math.floor(review.rating)){
                                   return <div className="reviews-rating__star is-active"></div>
-                                }else if(index <= Math.floor(review.star + 1)){
+                                }else if(index < Math.floor(review.rating + 1)){
                                   return <div className="reviews-rating__star is-half"></div>
                                 }else{
                                   return <div className="reviews-rating__star is-empty"></div>
@@ -626,20 +476,30 @@ const SingleProduct = (props) => {
                         }
                         <div className="reviews-author">
                           <div className="reviews-author__name">
-                              {review.user.username}
+                              {review.user.name}
                           </div>
                           <div className="reviews-author__description">
                               {
-                              review.color_size.map(color_size=>`${color_size.color_name}/${color_size.size_name}`).join(', ')
+                              review.color + "/" + review.size
                               }
                           </div>
                         </div>
                         <div className="reviews-listing__description">
                           <p>
-                              {review.comment}
+                              {review.review}
                           </p>
+                          <Row gutter={[16, 24]}>
+                            {
+                              (Array.isArray(review.images) && review.images.length !== 0) && 
+                                review.images.map(image=>(
+                                  <Col span={3}>
+                                    <Image src={image.url} width={70}/>
+                                  </Col>
+                                ))
+                            }
+                          </Row>
                           <span className="reviews-listing__date">
-                            {review.time}
+                            {review.formatted_created_at}
                           </span>
                         </div>
                       </div>
@@ -647,6 +507,12 @@ const SingleProduct = (props) => {
                   </div>
 
                   ))
+                }
+                { (Array.isArray(product.reviews) && product.reviews.length === 0) && (
+                  <div style={{display: 'flex', justifyContent: 'center'}}>
+                    <i>Chưa có nhận xét sản phẩm nào.</i>
+                  </div>
+                )
                 }
               </div>
               <div className="reviews-pagination">      

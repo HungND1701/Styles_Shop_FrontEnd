@@ -2,7 +2,7 @@ import React, {useState, useEffect, useContext} from 'react'
 import './OrderDetail.scss'
 import { Steps } from 'antd';
 import {getOrderById} from '../../../services/order'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import LoadingPopup from '../../Loading/LoadingPopup';
 import { Context } from '../../../utils/context';
 
@@ -16,10 +16,9 @@ const formatNumber = (num) => {
 };
 const OrderDetail = () => {
     const { id } = useParams();
-    const {user, setCurrentMenuAccount, parseNumber, formatCurrency} = useContext(Context);
+    const {setCurrentMenuAccount, parseNumber, formatCurrency} = useContext(Context);
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [totalCost , setTotalCost] = useState(0);
     const [totalSale , setTotalSale] = useState(0);
     useEffect(() => {
@@ -31,7 +30,6 @@ const OrderDetail = () => {
                 setOrder(data);
             } catch (error) {
                 setOrder([]);
-                setError(error);
             } finally {
                 setLoading(false);
             }

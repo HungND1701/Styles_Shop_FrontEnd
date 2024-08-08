@@ -9,6 +9,14 @@ export const getCategories = async () => {
     throw error;
   }
 };
+export const getCategoryProduct = async (id) => {
+  try {
+    const response = await api.get(`/category/products/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 // Phương thức để tạo category mới
 export const createCategory = async (categoryData) => {

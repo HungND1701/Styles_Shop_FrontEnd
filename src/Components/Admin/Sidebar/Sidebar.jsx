@@ -72,10 +72,10 @@ const Sidebar = () => {
     setCurrentMenu(e.key);
     switch(e.key) {
       case '1':
-        // code block
+        navigate('/admin');
         break;
       case '2':
-        // code block
+        navigate('/admin/order');
         break;
       case '3':
         navigate('/admin/category');
@@ -87,10 +87,10 @@ const Sidebar = () => {
         navigate('/admin/product');
         break;
       case '6':
-        
+        navigate('/admin/user');
         break;
       case '7':
-        
+        navigate('/admin/review');
         break;
       case '8':
         navigate('/admin/homepage');
@@ -112,6 +112,7 @@ const Sidebar = () => {
             defaultSelectedKeys={['1']}
             mode="inline"
             theme="light"
+            selectedKeys = {[{currentMenu}]}
             inlineCollapsed={false}
             items={items}
             onClick = {handleSelectMenu}

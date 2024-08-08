@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
 import './Product.scss'
-import Popup from '../../Popup/Popup';
-import Loading from '../Loading/Loading'; 
-import Error from '../Error/Error';
+import Popup from '../../../Components/Popup/Popup';
+import Loading from '../../../Components/Admin/Loading/Loading'; 
+import Error from '../../../Components/Admin/Error/Error';
 import { Context } from '../../../utils/context';
 import { useNavigate } from 'react-router-dom';
 import {getProducts, deleteProduct} from '../../../services/product';
-import { Input, Table, Tag, Tooltip, Button, Upload, Form, Image} from 'antd';
-import {PlusOutlined, EditOutlined, EyeOutlined, DeleteOutlined} from '@ant-design/icons';
+import { Input, Table, Tag, Tooltip, Button} from 'antd';
+import { EditOutlined, EyeOutlined, DeleteOutlined} from '@ant-design/icons';
 import { CiImport, CiExport, CiSearch } from "react-icons/ci";
 import { CgDanger } from "react-icons/cg";
 import { IoAddOutline } from "react-icons/io5";
-const { TextArea } = Input;
 
 const Product = () => {
     const navigate = useNavigate(); 

@@ -1,0 +1,56 @@
+.container-overview{
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    .box-thongke{
+        background-color: #cfb5a7;
+        color: #fff;
+        height: 100px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        gap: 8px;
+    }
+}
+.container-table-overview{
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    .table-title{
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+    .table-product{
+        flex: 1;
+    }
+    .table-category{
+        flex: 1;
+    }
+    .ant-table-thead >tr>th{
+        background: #e0c5b6;
+    }
+    .actions-column{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        gap: 10px;
+    }
+    .ant-pagination{
+        margin-right: 20px;
+    }
+    table{
+        border-radius: 0 20px 20px 0;
+        .ant-table-selection-column{
+            padding-left: 15px;
+        }
+    }
+}

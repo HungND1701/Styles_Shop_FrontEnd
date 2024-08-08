@@ -9,7 +9,6 @@ import momo_icon from "../../Assets/momo-icon.png"
 import vnpay_icon from "../../Assets/vnpay_icon.png"
 import qr_icon from "../../Assets/qr_icon.png"
 import {formatNumber} from '../../services/product'
-import LoadingPopup from '../Loading/LoadingPopup'
 import {createOrder} from '../../services/order'
 
 const cityArr = Object.keys(hanhchinhvn).sort().map(key =>{
@@ -74,7 +73,6 @@ const Cart = ({onOpenLoginPopup}) => {
   const [selectedProducts, setSelectedProducts] = useState(cart.map(() => true));
   const [selectAll, setSelectAll] = useState(true);
 
-  
   const getToTalPrice = ()=>{
     let total = 0; 
     let sale = 0;
@@ -133,7 +131,7 @@ const Cart = ({onOpenLoginPopup}) => {
       onOpenLoginPopup();
     }else{
       try {
-        const newProduct = await createOrder(order);
+          await createOrder(order);
           const notify = {
             type: 'success',
             message: "Đặt hàng thành công",
@@ -437,7 +435,7 @@ const Cart = ({onOpenLoginPopup}) => {
                                   />
                                   <Select
                                     defaultValue={
-                                      product.sizeOptions && product.sizeOptions.length > 0 
+                                      (product.sizeOptions && product.sizeOptions.length > 0)
                                         ? product.sizeOptions.filter(sz => sz.id === product.sizeId_picked)[0].value
                                         : undefined
                                     }

@@ -19,17 +19,17 @@ export const getBannersHomepage = async () => {
       throw error;
     }
   };
-  export const getBannerHomepageById = async (id) => {
+  export const editBannerHomepage = async (data, id) => {
     try {
-      const response = await api.get(`/banner-homepages/${id}`);
+      const response = await api.put(`/banner-homepages/${id}`, data);
       return response.data;
     } catch (error) {
       throw error;
     }
   };
-  export const updateBannersHomepage = async (id, data) => {
+  export const getBannerHomepageById = async (id) => {
     try {
-      const response = await api.put(`/banner-homepages/${id}`, data);
+      const response = await api.get(`/banner-homepages/${id}`);
       return response.data;
     } catch (error) {
       throw error;

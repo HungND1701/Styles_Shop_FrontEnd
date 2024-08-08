@@ -1,5 +1,22 @@
 import api from './api';
 
+export const getAllOrder = async () => {
+  try {
+    const response = await api.get(`/order`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const deleteOrderFromAdmin = async (id) => {
+  try {
+    const response = await api.delete(`/order/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
 export const createOrder = async (request) => {
     try {
       const response = await api.post('/order', request);
@@ -7,6 +24,31 @@ export const createOrder = async (request) => {
     } catch (error) {
       throw error;
     }
+};
+export const cancelOrder = async (id) => {
+  try {
+    const request = {};
+    const response = await api.post(`/order/cancle/${id}`, request);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const confirmOrder = async (request) => {
+  try {
+    const response = await api.post('/order/confirm', request);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const nextStatus = async (id) => {
+  try {
+    const response = await api.post(`/order/next-status/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getOrderById = async (id) => {

@@ -1,5 +1,4 @@
 import './Banner.scss'
-import banner_block_1 from '../../../Assets/Banners/Banner_block_1.jpg'
 const Banner = ({category}) => {
     const img = {
         name: category.name,

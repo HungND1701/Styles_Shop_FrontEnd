@@ -1,0 +1,161 @@
+
+
+.container-admin{
+    width: 100%;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-right: auto;
+    display: block;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    @media (min-width: 1440px) {
+        & {
+            max-width: 1440px;
+        }
+    }
+    @media (min-width: 600px) {
+        & {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+    .container-admin__inner{
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .container-admin-header{
+            margin: 0;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        .container-admin-actions{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-direction: row;
+            padding: 16px ;
+            border-radius: 20px;
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+            .search-button{
+                width: 40%;
+                height: 50px;
+                .ant-input-outlined{
+                    height: 100%;
+                    .ant-input-prefix{
+                        font-size: 24px;
+                        margin-inline-end: 8px;
+                    }
+                    input{
+                        font-size: 18px;
+                    }
+                }
+            }
+            .action-buttons{
+                display: flex;
+                gap: 14px;
+                align-items: center;
+                margin-right: 10px;
+                .action-button{
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+                    font-weight: 500;
+                    font-size: 1rem;
+                    line-height: 1.75;
+                    min-width: 64px;
+                    padding: 8px 16px;
+                    border-radius: 12px;
+                    border: none;
+                    text-transform: none;
+                    color: #3d3d3d;
+                    background-color: transparent;
+                    cursor: pointer;
+                    svg{
+                        font-size: 20px;
+                        margin-inline-end: 4px;
+                    }
+                    &:hover{
+                        background-color: #f8f8f8;
+                    }
+                    &.add-button-primary{
+                        background-color: #635bff;
+                        color: #fff;
+                        &:hover{
+                            background-color: #5f57f3;
+                        }
+                    }
+                }
+            }
+        }
+        .container-table{
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+            .ant-table-thead >tr>th{
+                background: #e0c5b6;
+            }
+            .actions-column{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-content: center;
+                gap: 10px;
+            }
+            .ant-pagination{
+                margin-right: 20px;
+            }
+            table{
+                border-radius: 0 20px 20px 0;
+                .ant-table-selection-column{
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+
+   .popup-wrapper{
+      .popup-header{
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+      .popup-header-delete{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        gap: 10px;
+      }
+      .form_container{
+        padding: 0 12px;
+        .form-row{
+            padding-bottom: 10px;
+        }
+        .form-row-delete{
+            padding-bottom: 10px;
+            text-align: center;
+            span{
+                padding-left: 8px;
+                font-size: 20px;
+            }
+        }
+        .title-row{
+            margin-bottom: 8px;
+        }
+        .btn-submit{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 30px;
+        }
+      }
+   }
+
+}

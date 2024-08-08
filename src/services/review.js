@@ -8,6 +8,31 @@ export const createReview = async (request) => {
       throw error;
     }
 };
+export const getAllReview = async () => {
+  try {
+    const response = await api.get('/reviews/all');
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const deleteReviewFromAdmin = async (id) => {
+  try {
+    const response = await api.delete(`/reviews/${id}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const deleteReviewFromUser = async (id) => {
+  try {
+    const request = {};
+    const response = await api.delete(`/reviews/user/${id}`, request);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 
 export const getReviewByUserId = async () => {
     try {
@@ -16,4 +41,12 @@ export const getReviewByUserId = async () => {
     } catch (error) {
       throw error;
     }
+};
+export const replyReview = async (data, reviewId) => {
+  try {
+    const response = await api.post('/reviews/reply', {});
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 };

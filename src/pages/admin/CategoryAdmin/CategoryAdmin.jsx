@@ -5,12 +5,12 @@ import { CiImport, CiExport, CiSearch } from "react-icons/ci";
 import { CgDanger } from "react-icons/cg";
 import { IoAddOutline } from "react-icons/io5";
 import {PlusOutlined, EditOutlined, EyeOutlined, DeleteOutlined} from '@ant-design/icons';
-import Popup from '../../Popup/Popup';
+import Popup from '../../../Components/Popup/Popup';
 import { useNavigate } from 'react-router-dom';
 import { getCategories, createCategory, deleteCategory, updateCategory } from '../../../services/categories';
 import { deleteFile } from '../../../services/upload';
-import Loading from '../Loading/Loading'; 
-import Error from '../Error/Error';
+import Loading from '../../../Components/Admin/Loading/Loading'; 
+import Error from '../../../Components/Admin/Error/Error';
 import { Context } from '../../../utils/context';
 const { TextArea } = Input;
 
@@ -490,7 +490,6 @@ const CategoryAdmin = () => {
                       </Form.Item>
                       <Form.Item label="Banner">
                           <Image
-                            
                             src={categorySelected.banner_img_url}
                           />
                       </Form.Item>

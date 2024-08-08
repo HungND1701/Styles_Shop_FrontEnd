@@ -9,8 +9,8 @@ import {getTypes} from '../../../../services/type';
 import {getCategories} from '../../../../services/categories';
 import {getSizesByProductTypeId} from '../../../../services/size';
 import {deleteFile} from '../../../../services/upload';
-import Loading from '../../Loading/Loading';
-import Error from '../../Error/Error';
+import Loading from '../../../../Components/Admin/Loading/Loading';
+import Error from '../../../../Components/Admin/Error/Error';
 import { PlusOutlined } from '@ant-design/icons';
 import {
     Button,

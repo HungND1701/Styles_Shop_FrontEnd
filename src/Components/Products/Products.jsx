@@ -54,7 +54,7 @@ const Products = (props) => {
         <div className="homepage-products__heading">
           {categoryArr[0].name}
           <span>
-            <a href="#">Xem thêm</a>
+            <a href={`/category/${categoryArr[0].id}`}>Xem thêm</a>
           </span>
         </div>
       )}

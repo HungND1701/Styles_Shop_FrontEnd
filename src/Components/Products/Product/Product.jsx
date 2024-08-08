@@ -6,8 +6,9 @@ import {getNewPrice, formatNumber} from '../../../services/product';
 const Product = (props) => {
   const product = props.product_data;
   const [selectedColorIndex, setSelectedColorIndex] = useState(0);
-  const [selectedSizeIndex, setSelectedSizeIndex] = useState(0);
   const {addItemToCart, setIsClickAdd} = useContext(Context);
+  const [rateAverage, setRateAverge] = useState(5);
+  const [reviewCount, setReviewCount] = useState(0);
   // Truy cập đúng vào sản phẩm đầu tiên trong mảng products
   const initialColorProduct = product.color_product[selectedColorIndex];
   const [colorProduct, setColorProduct] = useState(initialColorProduct);
@@ -34,6 +35,13 @@ const Product = (props) => {
 
   useEffect(()=>{
     setSelectedColorIndex(0);
+    if(Array.isArray(product.reviews) && product.reviews.length !== 0 ){
+      const reviewCount = product.reviews.length;
+      setReviewCount(reviewCount);
+      let total = 0
+      product.reviews.map(rv=>{total = total+rv.rating})
+      setRateAverge(total/reviewCount);
+    }
   }, [product]);
 
   return (
@@ -54,19 +62,19 @@ const Product = (props) => {
           </a>
         </div>
           
-        <span className="product-grid__tags product-grid__tags--sale">{product.tag.name}</span>
+        <span style={{backgroundColor: product.tag.name==="new" ? '#2F5ACF' : ''}} className="product-grid__tags product-grid__tags--sale">{product.tag.name}</span>
         <div className="product-grid__reviews">
-          <div className="reviews-rating" data-review-count={`(200)`} data-review-avg={4.9}>
-            <div className="">{4.9}</div>
+          <div className="reviews-rating" >
+            <div className="">{rateAverage}</div>
             <div className="reviews-rating__star"></div>
             <div className="reviews-rating__number">
-              (102)
+              ({reviewCount})
             </div>
           </div>
         </div>
         <div className={`product-grid__select`}>
           <p>Thêm nhanh vào giỏ hàng +</p>
-          <form action="" rel-script="product-grid-add" data-product-id="650d495aac852a1bce4bf342" >
+          <form action="" >
             <div className="option-select" data-option-id="color" data-option-index="1">
               {product.color_product.map((color_prd, index)=>(
                 <label key={index} className="option-select__item" style={{display: 'none'}}>

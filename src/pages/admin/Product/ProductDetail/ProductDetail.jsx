@@ -1,8 +1,8 @@
 import React, {useContext, useState, useEffect} from 'react'
 import './ProductDetail.scss'
-import Loading from '../../Loading/Loading';
-import Error from '../../Error/Error';
-import Popup from '../../../Popup/Popup';
+import Loading from '../../../../Components/Admin/Loading/Loading';
+import Error from '../../../../Components/Admin/Error/Error';
+import Popup from '../../../../Components/Popup/Popup';
 import { getProductById } from '../../../../services/product';
 import { useParams } from 'react-router-dom';
 import { Input, Image, Col, Row, ColorPicker, Table} from 'antd';

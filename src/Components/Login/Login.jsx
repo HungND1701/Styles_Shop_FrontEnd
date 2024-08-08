@@ -12,7 +12,7 @@ import facebook_icon from '../../Assets/facebook_icon.png'
 const Login = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(null);
+    const [errorMess, setErrorMess] = useState(null);
     const navigate = useNavigate(); 
 
     const handleLogin = async (e) => {
@@ -26,7 +26,7 @@ const Login = (props) => {
                 window.location.reload(); // Reset lại trang
             }
         } catch (error) {
-            setError('Login failed. Please check your credentials.');
+            setErrorMess('Đăng nhập thất bại. Kiểm tra lại thông tin');
         }
     };
 
@@ -67,7 +67,7 @@ const Login = (props) => {
                         <img src={facebook_icon} alt="" />
                     </span>
                 </button>
-                {error && <p>{error}</p>}
+                
             </div>
             <div className="login-or-divider">
                 <span>Hoặc</span>
@@ -80,6 +80,7 @@ const Login = (props) => {
                 <span className="form-icon"></span> 
             </div>
             <button type='submit' className="login-btn">Đăng nhập</button>
+            {errorMess && <p style={{color: 'red'}}>{errorMess}</p>}
             <div className="auth-actions">
                 <a onClick={props.onOpenRegisterPopup}>Đăng ký tài khoản mới</a>
                 <a onClick={props.onOpenForgotPopup} href="#">Quên mật khẩu</a>

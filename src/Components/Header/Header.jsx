@@ -1,15 +1,31 @@
 import './Header.scss'
 import '../../css-config/media.scss'
 import React, { useEffect, useState, useContext, useRef } from 'react';
+import {Form, Button} from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { TbSearch } from 'react-icons/tb';
 import { FaCartShopping } from "react-icons/fa6";
+import { IoMdClose } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { AiFillHeart } from 'react-icons/ai';
-import Search from './Search/Search';
-import Cart from '../Cart/Cart';
 import { Context } from "../../utils/context";
 import logo from "../../Assets/logo_word.svg";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { searchProduct } from '../../services/product';
+import SearchItem from './SearchItem/SearchItem';
+
+const settings = {    
+  dots: false,
+  infinite: false,
+  speed: 500,
+  centerPadding: "60px",
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  autoplay: false,
+  cssEase: "linear",
+};
 
 const Header = ({ onOpenLoginPopup }) => {
   const navigate = useNavigate();
@@ -17,6 +33,10 @@ const Header = ({ onOpenLoginPopup }) => {
   const {user, getTotalCartItems}= useContext(Context);
   const [isScrollUp, setIsScrollUp] = useState(true);
   const lastScrollPosition = useRef(0);
+  const [isSearch, setIsSearch] = useState(false);
+  const [form] = Form.useForm();
+  const [searchValue, setSearchValue] = useState('');
+  const [searchProducts, setSearchProduct] = useState([]);
 
   useEffect(() => {
     function handleScroll() {
@@ -39,9 +59,28 @@ const Header = ({ onOpenLoginPopup }) => {
   const onOpenUserInfo = () => {
     navigate('/account/info'); // Điều hướng đến trang /user
   };
+  const handleSearch = () => {
+    form.submit();
+  };
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+    if (e.target.value.trim() !== '') {
+      handleSearch();
+    }
+  };
+  const handleSubmitSearch = async ()=>{
+    try {
+        const $productsResponse = await searchProduct(searchValue);
+        console.log($productsResponse);
+        setSearchProduct($productsResponse);
+      } catch (error) {
+          setSearchProduct([])
+      }
+  }
 
   return (
-    <header className={`main-header ${isScrollUp ? '' : 'is-scroll-top'}` }>
+    <header className={`main-header ${!isSearch ? isScrollUp ? '' : 'is-scroll-top' : ''}` }>
       <div className="header__inner">
         <div className="header__toggle">
           <div>
@@ -67,35 +106,31 @@ const Header = ({ onOpenLoginPopup }) => {
         <div className="tablet--hidden mobile--hidden">
           <div className="header-content">
             <ul className='nav__sub nav__sub-active'>
-              <li className='nav__sub-item' onClick={()=>{setMenu("sale")}} style={{ backgroundColor: menu === 'sale' ? "rgb(255, 86, 5)" : "" }}>
+              <li className='nav__sub-item' onClick={()=>{setMenu("sale")}} style={{ backgroundColor: menu === 'sale' ? "#aa836e" : "" }}>
                 <a href="/"> SALE </a> 
               </li>
-              <li className='nav__sub-item' onClick={()=>{setMenu("product")}} style={{ backgroundColor: menu === 'product' ? "rgb(255, 86, 5)" : "" }}>
+              <li className='nav__sub-item' onClick={()=>{setMenu("product")}} style={{ backgroundColor: menu === 'product' ? "#aa836e" : "" }}>
                 <a href="/product"> SẢN PHẨM </a> 
               </li>
-              <li className='nav__sub-item' onClick={()=>{setMenu("men")}} style={{ backgroundColor: menu === 'men' ? "rgb(255, 86, 5)" : "" }}>
+              <li className='nav__sub-item' onClick={()=>{setMenu("men")}} style={{ backgroundColor: menu === 'men' ? "#aa836e" : "" }}>
                 <a href="/"> NAM </a> 
               </li>
-              <li className='nav__sub-item' onClick={()=>{setMenu("women")}} style={{ backgroundColor: menu === 'women' ? "rgb(255, 86, 5)" : "" }}>
+              <li className='nav__sub-item' onClick={()=>{setMenu("women")}} style={{ backgroundColor: menu === 'women' ? "#aa836e" : "" }}>
                 <a href="/"> NỮ </a> 
               </li>
-              <li className='nav__sub-item' onClick={()=>{setMenu("kid")}} style={{ backgroundColor: menu === 'kid' ? "rgb(255, 86, 5)" : "" }}>
+              <li className='nav__sub-item' onClick={()=>{setMenu("kid")}} style={{ backgroundColor: menu === 'kid' ? "#aa836e" : "" }}>
                 <a href="/"> TRẺ EM </a> 
-              </li>
-              <li className='nav__sub-item' onClick={()=>{setMenu("san xuat rieng")}} style={{ backgroundColor: menu === 'san xuat rieng' ? "rgb(255, 86, 5)" : "" }}>
-                <a href="/"> SẢN XUẤT RIÊNG </a> 
               </li>
             </ul>
           </div>
         </div>
         <div className="header__actions">
           <div className="header-actions-search__box mobile--hidden tablet--hidden">
-            <label htmlFor="" className='header-actions-search__field'>
-              <input id="search-input" type="text" name="search" rel-script="search-input" placeholder="Tìm kiếm sản phẩm..." className='header-actions-search__control one-whole'/>
+            <label htmlFor="" className='header-actions-search__field' >
+              <input id="search-input" type="text" name="search" onClick={()=>setIsSearch(true)} placeholder="Tìm kiếm sản phẩm..." className='header-actions-search__control one-whole'/>
               <a href="#" className='header-actions-search__button'>
                 <TbSearch />
               </a>
-              
             </label>
           </div>
           <div className="header-actions__buttons">
@@ -113,36 +148,66 @@ const Header = ({ onOpenLoginPopup }) => {
               <FaCartShopping />
             </a>
             <span className='counts site-header__cartcount'>{getTotalCartItems()}</span>
-            {/* <div className="header-actions-cart__menu">
-              <div className="header-actions-cart__inner">
-                <div className="mini-cart">
-                  <div className="mini-cart__wrapper">
-                    <div className="mini-cart__header">
-                        <span>0 sản phẩm</span>
-                        <a href="/cart">Xem tất cả</a>
-                    </div>
-                    <div className="mini-cart__item">
-                      <div className="mini-cart__item-thumbnail">
-                        <img src="" alt="" />
-                      </div>
-                      <div className="mini-cart_item-content">
-                        <span className="mini-cart__remove">✕</span>
-                        <div className="mini-cart__item-title">
-                          <a href="/product/1" target='_blank'>Áo thể thao mấu 1</a>
+          </div>
+        </div>
+        <div className={`header-search ${isSearch ? 'is-active': ''}`} >
+          <Form
+            name="search-form"
+            form={form}
+            onFinish={handleSubmitSearch}
+          >
+              <Form.Item name='searchValue' className='form-item'>
+                <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." autocomplete="off" className="header-search__control one-whole"
+                value={searchValue}
+                onChange={handleChange}
+                />
+                <button onClick={()=>setIsSearch(false)} className="homepage-search__submit" style={{top: '13px', right: '30px', width: 'unset', height: 'unset', zIndex: '10'}}>
+                  <TbSearch />
+                </button>
+                <button onClick={()=>setIsSearch(false)} className="homepage-search__submit" style={{top: '13px', right: '-100px', width: 'unset', height: 'unset', zIndex: '10'}}>
+                  <IoMdClose />
+                </button>
+              </Form.Item>
+          </Form>
+          <div className="search-result-container">
+            <div className="search-content">
+              <div className="search-content__wrapper">
+                  <div className="search-content__inner">
+                    {
+                      searchProducts.length!==0 && (
+                        <>
+                          <p className="search__title" style={{fontWeight: 'bold', fontSize: '14px', marginTop: '0px', padding: '0px 80px'}}>Sản phẩm</p>
+                          <div className="product-search_container">
+                            <Slider {...settings} className='homepage-products__slides grid'>
+                              {searchProducts.map((product, index)=>(
+                                <div key={index} className="grid__column">
+                                  <SearchItem product_data={product}/>
+                                </div>
+                              ))}
+                            </Slider>
+                          </div>
+                          <div className={`grid`} style={{justifyContent: 'center'}}>
+                            <div style={{textAlign: 'center', marginBottom: '20px'}}>
+                              <Button type='primary' style={{backgroundColor: '#CFB5A7', color: '#fff', textAlign: 'center'}}>
+                                  Xem thêm   
+                              </Button>
+                            </div>
+                          </div>
+                        </>
+
+                      )
+                    }
+                    {
+                      searchProducts.length===0 && (
+                        <div className={`grid grid--four-columns large-grid--four-columns tablet-grid--three-columns mobile-grid--two-columns`} style={{justifyContent: 'center'}}>
+                          <div style={{textAlign: 'center'}}><i>Không tìm thấy kết quả phù hợp!</i></div>
                         </div>
-                        <div className="mini-cart__item-variant-info"> Cam Paprika / S</div>
-                        <div>
-                          <span className='mini-cart__item-price'>239.000đ</span>
-                        </div>
-                        <div>
-                          <span className='mini-cart__item-quantity'>x1</span>
-                        </div>
-                      </div>
-                    </div>
+                      )
+                    }
                   </div>
-                </div>
               </div>
-            </div> */}
+            </div>
+            <div className="backgroud"></div>
           </div>
         </div>
       </div>

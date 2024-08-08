@@ -1,0 +1,240 @@
+.container-admin__inner{
+    &.order-admin{
+        border-radius: 24px;
+        box-shadow: 0 5px 22px 0 rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    }
+    .account-page__content{
+        flex: 1 1;
+        background-color: #fff;
+        padding: 3.625rem 3.875rem;
+        border-radius: .5rem;
+        overflow: hidden;
+    }
+    .detail-order {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    position: relative;
+    }
+    .detail-order-heading {
+        margin-bottom: 0;
+        font-size: 1.875rem;
+        font-weight: 700;
+        margin-top: 0;
+    }
+    .detail-order-status {
+        font-size: 14px;
+        padding: 5px 12px;
+        background-color: hsla(0,0%,100%,0);
+        color: #2f5acf;
+        border-radius: 23px;
+        border: 1px solid #2f5acf;
+        font-weight: 400;
+        width: -moz-fit-content;
+        width: fit-content;
+        white-space: nowrap;
+    }
+    .detail-order-info {
+        display: flex;
+        .detail-order-info__list {
+            min-width: 600px;
+            list-style-type: none;
+            padding: 0;
+            line-height: 1.8em;
+            margin: 0;
+            li {
+                display: flex;
+                .detail-order-info__title {
+                    width: 30%;
+                }
+                .detail-order-info__content {
+                    width: 70%;
+                }
+            }
+        }
+    }
+    .order-date {
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 1rem;
+    }
+    .detail-order-cta {
+        margin-top: 1rem;
+        margin-left: 15px;
+        a {
+            height: auto;
+            padding: .5rem 2rem;
+            border-radius: 100vmax;
+            line-height: 1.5;
+            box-sizing: border-box;
+            font-family: CriteriaCF,Pangea,sans-serif;
+            margin-right: 10px;
+            margin-top: 0;
+        }
+    }
+    .detail-order-button {
+        .btn {
+            height: 40px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 24px;
+            padding: .75rem 1.875rem;
+            font-family: CriteriaCF,Pangea,sans-serif;
+        }
+
+    }
+    .btn--outline {
+        background-color: hsla(0,0%,100%,0);
+        color: #000;
+    }
+    .lookup-order-history__timeline{
+        padding-left: 30px;
+    }
+    .lookup-order-result__heading { 
+        font-size: 2.5rem;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .lookup-order-result__heading {
+        margin-top: 2rem;
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+        text-align: left;
+        text-transform: unset;
+    }
+    .table {
+        display: table;
+        width: 100%;
+        border-spacing: 0;
+        background: #d9d9d9;
+        border-radius: 16px;
+        margin: 1rem 0;
+        background-color: #fff;
+        margin-bottom: 30px;
+        max-width: 100%;
+        thead {
+            position: relative;
+            z-index: 1;
+            & > tr th:first-child {
+                padding: 1.5rem 2.0625rem;
+            }
+            tr th {
+                color: #fff;
+                background-color: #2f5acf;
+                font-weight: 500;
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+                font-size: 1.125rem;
+            }
+            tr th:first-child {
+                border-radius: .5rem 0 0 .5rem;
+            }
+            tr th:last-child {
+                border-radius: 0 .625rem .625rem 0;
+            }
+        }
+        tbody {
+            position: relative;
+            &:after, &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 100%;
+                width: 2rem;
+                height: 2rem;
+                background-color: #d9d9d9;
+            }
+            &:after {
+                left: auto;
+                right: 0;
+            }
+            tr:not(:nth-child(2n)) td, tr:nth-child(2n) td {
+                background: #e8ecf2;
+                border-bottom: 1px solid #c2c6dd;
+            }
+            tr td {
+                padding-top: 1.25rem;
+                padding-bottom: 1.25rem;
+            }
+            tr:not(:nth-child(2n)) td, tr:nth-child(2n) td {
+                background-color: #eee;
+            }
+            tr:last-child td:first-child {
+                border-radius: 0 0 0 .625rem;
+            }
+            tr:last-child td:last-child {
+                border-radius: 0 0 .625rem 0;
+            }
+        }
+        tfoot {
+            td {
+                text-align: left;
+                background-color: #fff!important;
+                border-bottom: 1px solid #d9d9d9;
+                padding: 21px 0;
+                &:last-child {
+                    text-align: right;
+                }
+            }
+            .total_payment {
+                font-weight: 700;
+                font-size: 1.1rem;
+            }
+            tr:last-child td {
+                border-bottom: 1px solid #d9d9d9!important;
+            }
+            tr.total_payment td {
+                background-color: #000!important;
+                color: #fff;
+                padding: .875rem 1.5rem;
+            }
+            tr:last-child td:first-child {
+                border-radius: 0 0 0 16px;
+            }
+            tr:last-child td:last-child {
+                border-radius: 0 0 16px 0;
+            }
+        }
+        td {
+            padding: 10px;
+        }
+        .detail-order-item__thumbnail {
+            min-width: 70px;
+        }
+    }
+    .detail-order-item__thumbnail {
+        max-width: 70px;
+        max-height: 110px;
+        overflow: hidden;
+        margin-right: 10px;
+        position: relative;
+        border-radius: 10px;
+        border: 1px solid #9fb1e1;
+        img {
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    @media (min-width: 1201px) and (max-width: 1660px) {
+        .detail-order-heading {
+            font-size: 1.2rem;
+        }
+    }
+    @media screen and (min-width: 991px) {
+        .detail-order-item__thumbnail img {
+            height: auto;
+        }
+    }
+}
+.text--left {
+    text-align: left;
+}

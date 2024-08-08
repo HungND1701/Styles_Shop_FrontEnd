@@ -9,10 +9,7 @@ const Footer = () => {
                 <div className="col">
                     <div className="title">Về chúng tôi</div>
                     <div className="text">
-                        Voluptatem accusantium doloremque laudantium, totam rem
-                        aperiam, eaque ipsa quae ab illo inventore veritatis et
-                        quasi architecto beatae vitae dicta sunt explicabo eaque
-                        ipsa quae ab illo.
+                    SStyle là một nền tảng thương mại điện tử thời trang năng động, cung cấp một loạt các sản phẩm quần áo và phụ kiện theo xu hướng dành cho mọi lứa tuổi. Kết hợp các xu hướng thời trang mới nhất với giao diện dễ sử dụng. Hội viên của SStyle được hưởng các quyền lợi đặc biệt. Tham gia SStyle để nâng tầm phong cách của bạn và tận hưởng những lợi ích vô song khi trở thành một phần của cộng đồng sôi động của chúng tôi.
                     </div>
                 </div>
                 <div className="col">
@@ -20,8 +17,7 @@ const Footer = () => {
                     <div className="c-item">
                         <FaLocationArrow />
                         <div className="text">
-                            Kayaloram Rd, Punnamada, Kottankulangara, Alappuzha,
-                            Kerala, 688006
+                            Mipec, Kiến Hưng, Hà Đông, Hà Nội, Việt Nam
                         </div>
                     </div>
                     <div className="c-item">
@@ -30,17 +26,15 @@ const Footer = () => {
                     </div>
                     <div className="c-item">
                         <FaEnvelope />
-                        <div className="text">Email: store@jsdev.com</div>
+                        <div className="text">Email: SStyle@gmail.com</div>
                     </div>
                 </div>
                 <div className="col">
                     <div className="title">Danh mục sản phẩm</div>
-                    <span className="text">Headphones</span>
-                    <span className="text">Smart Watches</span>
-                    <span className="text">Bluetooth Speakers</span>
-                    <span className="text">Wireless Earbuds</span>
-                    <span className="text">Home Theatre</span>
-                    <span className="text">Projectors</span>
+                    <span className="text">Áo thể thao nam</span>
+                    <span className="text">Áo công sở</span>
+                    <span className="text">Thời trang cho trẻ</span>
+                    <span className="text">Áo polo nam</span>
                 </div>
                 <div className="col">
                     <div className="title">Trang</div>

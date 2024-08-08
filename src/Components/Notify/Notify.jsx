@@ -1,9 +1,10 @@
 import './Notify.scss'
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import { Context } from '../../utils/context';
+import { useNavigate } from 'react-router-dom';
 
 const Notify = () => {
-
+    const navigate = useNavigate(); 
     const {notifyContent, isOpenNotify, setIsOpenNotify} = useContext(Context);
     return (
     <div className={`notify ${isOpenNotify ? 'is-actice' : ""} ${notifyContent.type}`}>
@@ -36,7 +37,7 @@ const Notify = () => {
                     </div>
                 {
                      (notifyContent.content) && (
-                         <a href="/cart" className="btn btn--outline btn--small">Xem giỏ hàng</a>
+                         <a onClick={()=>{navigate("/cart"); window.location.reload();}} className="btn btn--outline btn--small">Xem giỏ hàng</a>
                      )
                 }
             </div>

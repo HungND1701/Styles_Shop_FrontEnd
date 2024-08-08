@@ -1,7 +1,8 @@
 import React, {useEffect, useState, useContext} from 'react'
 import LoadingPopup from '../../Loading/LoadingPopup'
-import {getOrderByUserId} from '../../../services/order'
+import {cancelOrder, getOrderByUserId} from '../../../services/order'
 import { Context } from '../../../utils/context';
+import { useNavigate } from 'react-router-dom';
 import Popup from '../../Popup/Popup';
 import {Form, Rate, Upload, Input, Button, Image } from 'antd';
 import { IoMdCheckmark } from "react-icons/io";
@@ -45,7 +46,8 @@ const getTokenFromLocalStorage = () => {
     return sessionStorage.getItem('token'); 
 };
 const OrderHistory = () => {
-    const {user, setCurrentMenuAccount, setIsClickAdd, setNotifyContent} = useContext(Context);
+    const {setCurrentMenuAccount, setIsClickAdd, setNotifyContent} = useContext(Context);
+    const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -84,6 +86,29 @@ const OrderHistory = () => {
 
     const onClosePopup = ()=>{
         setIsOpenPopupReview(false)
+    }
+    const handleCancleOrder = async (order)=>{
+        try {
+            await cancelOrder(order.id);
+            const notify = {
+              type: 'success',
+              message: "Đã hủy đơn hàng",
+              content: null,
+            }
+            setNotifyContent(notify);
+            setIsClickAdd(true);
+            setTimeout(
+                navigate(0), 1000
+            )
+          } catch (error) {
+            const notify = {
+              type: 'fail',
+              message: "Không thể hủy đơn hàng",
+              content: null,
+            }
+            setNotifyContent(notify);
+            setIsClickAdd(true);
+          }
     }
 
     const onFinish = async (order_id, product_id, values) => {
@@ -224,6 +249,15 @@ const OrderHistory = () => {
                                             e.stopPropagation(); // Ngăn chặn sự kiện lan ra thẻ cha
                                             handleReview(order);
                                         }} > Đánh giá </a>
+                                    )
+                                }
+                                {
+                                    (order.statuses[0].name === "Chờ xác nhận" ) && (
+                                        <a class="btn btn--black" onClick={(e) => {
+                                            e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a
+                                            e.stopPropagation(); // Ngăn chặn sự kiện lan ra thẻ cha
+                                            handleCancleOrder(order);
+                                        }} >Hủy đơn hàng</a>
                                     )
                                 }
                                 {

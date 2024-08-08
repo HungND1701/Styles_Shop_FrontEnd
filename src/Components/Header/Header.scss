@@ -28,6 +28,143 @@
             padding-left: 15px;
             padding-right: 15px;
         }
+        .header-search{
+            background-color: #fff;
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            transition: all .3s;
+            visibility: hidden;
+            width: 100%;
+            &.is-active{
+                opacity: 1;
+                pointer-events: visible;
+                visibility: visible;
+                z-index: 10;
+            }
+            form{
+                background: #fff;
+                display: flex;
+                height: 96px;
+                width: 60%;
+                margin: 0 auto;
+                .form-item{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                }
+                .header-search__control {
+                    background-color: hsla(0,0%,83%,.4);
+                    border: 0;
+                    border-radius: 33px;
+                    box-shadow: none;
+                    height: 50px;
+                    padding: 0 20px;
+                }
+                .one-whole {
+                    width: 500px;
+                }
+                .homepage-search__submit {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    bottom: 15px;
+                    right: 15px;
+                    background-color: #0000;
+                    border: 0;
+                    cursor: pointer;
+                    font-size: 24px;
+                    color: #5e5e5e;
+                }
+            }
+            .search-content{
+                background: #fff;
+                border-radius: 10px;
+                display: block;
+                margin: 10px auto 0;
+                overflow: hidden;
+                width: 1000px;
+                border-bottom: 1px solid #d9d9d9;
+                transition: all .2s;
+            }
+            .search-result-container{
+                height: 100%;
+                pointer-events: visible;
+                position: fixed;
+                transition: all .3s;
+                width: 100%;
+                .search-content__wrapper {
+                    background-color: #fff;
+                    min-height: 200px;
+                    position: relative;
+                    z-index: 10;
+                    .search-content__inner {
+                        display: block;
+                        opacity: 1;
+                        pointer-events: visible;
+                        visibility: visible;
+                        width: 100%;
+                        padding-top: 40px;
+                    }
+                }
+                .backgroud{
+                    background: rgba(0, 0, 0, .6);
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    transition: all .3s;
+                    width: 100%;
+                }
+            }
+            .grid__column {
+                position: relative;
+                box-sizing: border-box;
+                min-height: 1px;
+                vertical-align: top;
+                margin-left: 0!important;
+                margin-right: 0!important;
+                padding: 9px;
+                width: 100%;
+            }
+            .slick-prev::before, .slick-next::before{
+                font-size: 30px;
+                color: black;
+            }
+            .slick-prev, .slick-next{
+                z-index: 9999;
+                width: 30px;
+                height: 30px;
+            }
+            .slick-prev{
+                left: -25px;
+                @media (max-width: 1440px) {
+                    left: 20px;
+                }
+            }
+            .slick-next{
+                right: -25px;
+                @media (max-width: 1440px) {
+                    right: 20px;
+                }
+            }
+            .slick-slider .slick-list, .slick-slider .slick-track {
+                transform: translateZ(0);
+            }
+            .homepage-products__slides {
+                margin-left: -9px;
+                margin-right: -9px;
+            }
+            .product-search_container{
+                padding: 0px 50px;
+            }
+        }
         .header__toggle{
             display: none;
             @include lg0{

@@ -1,5 +1,4 @@
 import {createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 export const Context = createContext();
 
 const AppContext = ({ children }) => {
@@ -73,6 +72,7 @@ const AppContext = ({ children }) => {
                 // Sản phẩm đã tồn tại trong giỏ hàng, tăng số lượng
                 const updatedItems = [...prevItems];
                 updatedItems[itemIndex].quantity += item.quantity;
+                console.log('Updated quantity:', updatedItems[itemIndex].quantity);
                 return updatedItems;
             } else {
                 // Sản phẩm chưa có trong giỏ hàng, thêm mới với quantity = 1

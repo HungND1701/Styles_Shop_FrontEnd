@@ -16,6 +16,15 @@ export const getProductById = async (id) => {
     throw error;
   }
 };
+export const searchProduct = async (name) => {
+  const request = {findName : name};
+  try {
+    const response = await api.post(`/product/search`, request);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 export const getAllProduct = async () => {
   try {
     const response = await api.get('/product/getAll');
@@ -33,6 +42,36 @@ export const createProduct = async (productData) => {
         console.log(error);
       throw error;
     }
+};
+export const addColorToProduct = async (colorData, id) => {
+  try {
+    const response = await api.post(`/product/addcolor/${id}`, colorData);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+      console.log(error);
+    throw error;
+  }
+};
+export const updateColorInfoProduct = async (colorData, id) => {
+  try {
+    const response = await api.put(`/product/updatecolor/${id}`, colorData);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+      console.log(error);
+    throw error;
+  }
+};
+export const updateSizeProduct = async (request, colorProductId) => {
+  try {
+    const response = await api.post(`/product/size/${colorProductId}`, request);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+      console.log(error);
+    throw error;
+  }
 };
 export const updateProduct = async (id, productData) => {
   try {
@@ -57,6 +96,15 @@ export const deleteProduct = async (id) => {
 export const deleteImageFromProduct = async (imageColorProductId) => {
   try {
     const response = await api.delete(`/product/image/${imageColorProductId}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteColorFromProduct = async (colorProductId) => {
+  try {
+    const response = await api.delete(`/product/color/${colorProductId}`);
     return response.data;
   } catch (error) {
     throw error;

@@ -33,9 +33,10 @@ export const getCategoryHomepageById = async (id) => {
       throw error;
     }
 };
-export const updateCategoryHomepage = async (id, data) => {
+export const updateCategoryHomepage = async (data, id) => {
     try {
       const response = await api.put(`/category-homepages/${id}`, data);
+      console.log(response);
       return response.data;
     } catch (error) {
       throw error;

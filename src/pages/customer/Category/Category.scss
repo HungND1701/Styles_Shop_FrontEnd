@@ -1,0 +1,132 @@
+@import "../../../css-config/mixins.scss";
+.category{
+    .category-banner{
+        width: 100%;
+        .banner{
+            width: 100%;
+        }
+    }
+    .category-products{
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        position: relative;;
+        .filter-product{
+            max-width: 305px;
+            width: 100%;
+            .filters{
+                padding-left: 64px;
+                position: sticky;
+                top: 20px;
+                transition: all .3s;
+                .filter-wrapper {
+                    max-height: calc(100vh - 50px);
+                    min-width: 253px;
+                    overflow: auto;
+                    padding-right: 15px;
+                    .filter__heading {
+                        font-size: .875rem;
+                        font-weight: 500;
+                        margin: .75rem 0;
+                        opacity: .5;
+                    }
+                    .ant-checkbox-input{
+                        border: 2px solid rgba(36, 36, 36, .349);
+                        height: 21px;
+                        left: 2px;
+                        width: 21px;
+                    }
+                    .filter-select-size {
+                        display: flex;
+                        flex-wrap: wrap;
+                        list-style: none;
+                        overflow: hidden;
+                        padding-left: 0;
+                        transition: all .4s ease;
+                        .filter-select-size__item {
+                            margin-top: 8px;
+                            position: relative;
+                            input:checked~label {
+                                background: #2f5acf;
+                                border: none;
+                                span {
+                                    color: #fff;
+                                }
+                            }
+                        }
+                        .filter-select-size__button {
+                            align-items: center;
+                            background: #fff;
+                            border: 1px solid #bebebe;
+                            border-radius: .375rem;
+                            cursor: pointer;
+                            display: flex;
+                            justify-content: center;
+                            margin-right: 8px;
+                            padding: .375rem 1.5rem;
+                        }
+                    }
+                    .filter-select-color {
+                        display: grid;
+                        gap: 6px;
+                        grid-template-columns: repeat(3, 1fr);
+                        list-style: none;
+                        overflow: hidden;
+                        padding-left: 0;
+                        transition: all .4s ease;
+                        .filter-select-color__item {
+                            align-items: center;
+                            cursor: pointer;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            margin-bottom: 6px;
+                            position: relative;
+                            white-space: nowrap;
+                            .filter-select-color__button {
+                                border: 1px solid #bebebe;
+                                border-radius: 50%;
+                                height: 26px;
+                                margin: 4px;
+                                position: relative;
+                                width: 26px;
+                                &:before {
+                                    border: 2px solid transparent;
+                                    border-radius: 50%;
+                                    content: "";
+                                    height: 32px;
+                                    left: 50%;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translate(-50%,-50%);
+                                    width: 32px;
+                                }
+                            }
+                        }
+                        .filter-select-color__item-list input:checked~label .filter-select-color__button:before {
+                            border: 2px solid #2f5acf;
+                        }
+                        .filter-select-color__label {
+                            font-size: .75rem;
+                            opacity: .5;
+                        }
+                    }
+                }
+            }
+        }
+        h1{
+            font-size: 26px;
+            font-weight: 700;
+        }
+        .product-container{
+            width: 100%;
+            padding: 0px 30px;
+        }
+        .product-grid{
+            padding: 10px 0px;
+            .gutter-row{
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

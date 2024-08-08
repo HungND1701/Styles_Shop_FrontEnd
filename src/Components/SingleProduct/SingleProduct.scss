@@ -735,7 +735,7 @@ $zoom-url: "#{$base-url}/zoom.svg";
                         line-height: 18px;
                         color: #000;
                         margin-top: 5px;
-                        margin-bottom: 25px;
+                        margin-bottom: 15px;
                         line-height: 1.5em;
                         .reviews-author__name {
                             font-weight: 500;
@@ -755,12 +755,14 @@ $zoom-url: "#{$base-url}/zoom.svg";
                         p {
                             margin: 0;
                             font-weight: 400;
+                            margin-bottom: 5px;
                         }
                         .reviews-listing__date {
                             display: block;
-                            margin-top: 20px;
+                            margin-top: 10px;
                             opacity: .5;
                         }
+                        
                     }
                 }
                 .reviews-pagination{
